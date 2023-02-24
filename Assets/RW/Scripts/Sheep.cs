@@ -11,6 +11,7 @@ public class Sheep : MonoBehaviour
     [SerializeField] private float dropDestroyDelay;
     private Collider myCollider;
     private Rigidbody myRigidbody;
+    private SheepSpawner sheepSpawner;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class Sheep : MonoBehaviour
 
     private void HitByHay()
     {
+        sheepSpawner.RemoveSheepFromList(gameObject);
         hitByHay = true;
         runSpeed = 0;
 
@@ -50,5 +52,10 @@ public class Sheep : MonoBehaviour
         myRigidbody.isKinematic = false;
         myCollider.isTrigger = false;
         Destroy(gameObject, dropDestroyDelay);
+    }
+
+    public void SetSpawner(SheepSpawner spawner)
+    {
+        sheepSpawner = spawner;
     }
 }

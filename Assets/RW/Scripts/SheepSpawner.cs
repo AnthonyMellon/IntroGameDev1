@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SheepSpawner : MonoBehaviour
 {
-    [SerializeField] private bool canSpawn = true;
+    public bool canSpawn = true;
     [SerializeField] private GameObject sheepPrefab;
     [SerializeField] private List<Transform> sheepSpawnPositions;
     [SerializeField] private float timeBetweenSpawns;

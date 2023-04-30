@@ -48,6 +48,7 @@ public class Sheep : MonoBehaviour
 
     private void Drop()
     {
+        sheepSpawner.RemoveSheepFromList(gameObject);
         dropped = true;
         myRigidbody.isKinematic = false;
         myCollider.isTrigger = false;

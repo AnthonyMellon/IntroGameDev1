@@ -22,6 +22,11 @@ public class UIManager : MonoBehaviour
         UpdateHighScore();
     }
 
+    private void Update()
+    {
+        highScore.color = Color.HSVToRGB(((Time.frameCount / 10f) % 255f) / 255f, 1, 1);
+    }
+
     public void UpdateSheepSaved()
     {
         sheepSavedText.text = GameStateManager.Instance.sheepSaved.ToString();

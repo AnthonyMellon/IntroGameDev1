@@ -917,12 +917,12 @@ MonoBehaviour:
   - {fileID: 1985853347}
   - {fileID: 1601441195}
   - {fileID: 562597210}
-  minTimeBetweenSpawns: 0.5
+  minTimeBetweenSpawns: 0.1
   maxTimeBetweenSpawns: 2
-  timeBetweenSpawnsChangeTime: 120
-  minSheepSpeed: 10
-  maxSheepSpeed: 20
-  sheepSpeedChangeTime: 120
+  timeBetweenSpawnsChangeTime: 60
+  minSheepSpeed: 1
+  maxSheepSpeed: 100
+  sheepSpeedChangeTime: 60
 --- !u!4 &1498290633
 Transform:
   m_ObjectHideFlags: 0

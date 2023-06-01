@@ -7,13 +7,29 @@ public class SheepSpawner : MonoBehaviour
     public bool canSpawn = true;
     [SerializeField] private GameObject sheepPrefab;
     [SerializeField] private List<Transform> sheepSpawnPositions;
-    [SerializeField] private float timeBetweenSpawns;
+    private float timeElapsed;
 
+    [Header("Time Between Spawns")]
+    [Tooltip("The minimum time between sheep spawns in seconds")]
+    [SerializeField] private float minTimeBetweenSpawns;
+
+    [Tooltip("The maximum time between sheep spawns in seconds")]
+    [SerializeField] private float maxTimeBetweenSpawns;
+
+    [Tooltip("The time it takes to go from maxTimeBetweenSpawns to minTimeBetweenSpawns in seconds")]
+    [SerializeField] private float timeBetweenSpawnsChangeTime;
+
+    [SerializeField]
     private List<GameObject> sheepList = new List<GameObject>();
 
     private void Start()
     {
         StartCoroutine(SpawnRoutine());
+    }
+
+    private void Update()
+    {
+        timeElapsed += Time.deltaTime;
     }
 
     private void SpawnSheep()
@@ -29,7 +45,7 @@ public class SheepSpawner : MonoBehaviour
         while(canSpawn)
         {
             SpawnSheep();
-            yield return new WaitForSeconds(timeBetweenSpawns);
+            yield return new WaitForSeconds(Mathf.Lerp(maxTimeBetweenSpawns, minTimeBetweenSpawns, timeElapsed / timeBetweenSpawnsChangeTime));
         }
     }
 

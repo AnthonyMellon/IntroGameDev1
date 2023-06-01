@@ -9,11 +9,17 @@ public class UIManager : MonoBehaviour
 
     public Text sheepSavedText;
     public Text sheepDroppedText;
+    public Text highScore;
     public GameObject gameOverWindow;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        UpdateHighScore();
     }
 
     public void UpdateSheepSaved()
@@ -24,6 +30,11 @@ public class UIManager : MonoBehaviour
     public void UpdateSheepDropped()
     {
         sheepDroppedText.text = GameStateManager.Instance.sheepDropped.ToString();
+    }
+
+    public void UpdateHighScore()
+    {
+        highScore.text = $"High Score: {GameSettings.highScore}";
     }
 
     public void ShowGameOverWindow()

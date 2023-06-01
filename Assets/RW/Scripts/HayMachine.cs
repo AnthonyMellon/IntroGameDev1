@@ -11,6 +11,34 @@ public class HayMachine : MonoBehaviour
     [SerializeField] private float shootInterval;
     private float shootTimer;
 
+    public Transform modelParent;
+    public GameObject blueModelPrefab;
+    public GameObject yellowModelPrefab;
+    public GameObject redModelPrefab;
+
+    private void Start()
+    {
+        LoadModel();   
+    }
+
+    private void LoadModel()
+    {
+        Destroy(modelParent.GetChild(0).gameObject);
+
+        switch (GameSettings.hayMachineColour)
+        {
+            case HayMachineColour.Blue:
+                Instantiate(blueModelPrefab, modelParent);
+                break;
+            case HayMachineColour.Yellow:
+                Instantiate(yellowModelPrefab, modelParent);
+                break;
+            case HayMachineColour.Red:
+                Instantiate(redModelPrefab, modelParent);
+                break;
+        }
+    }
+
     private void Update()
     {
         UpdateMovement();

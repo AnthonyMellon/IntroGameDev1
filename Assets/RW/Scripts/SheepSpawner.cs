@@ -8,6 +8,7 @@ public class SheepSpawner : MonoBehaviour
     [SerializeField] private GameObject sheepPrefab;
     [SerializeField] private List<Transform> sheepSpawnPositions;
     private float timeElapsed;
+    private List<GameObject> sheepList = new List<GameObject>();
 
     [Header("Time Between Spawns")]
     [Tooltip("The minimum time between sheep spawns in seconds")]
@@ -19,8 +20,16 @@ public class SheepSpawner : MonoBehaviour
     [Tooltip("The time it takes to go from maxTimeBetweenSpawns to minTimeBetweenSpawns in seconds")]
     [SerializeField] private float timeBetweenSpawnsChangeTime;
 
-    [SerializeField]
-    private List<GameObject> sheepList = new List<GameObject>();
+    [Header("Sheep Speed")]
+    [Tooltip("The minimum speed for a sheep")]
+    [SerializeField] private float minSheepSpeed;
+
+    [Tooltip("The maximum speed for a sheep")]
+    [SerializeField] private float maxSheepSpeed;
+
+    [Tooltip("The time it takes to go from minSheepSpeed to maxSheepSpeed")]
+    [SerializeField] private float sheepSpeedChangeTime;
+
 
     private void Start()
     {
@@ -38,6 +47,7 @@ public class SheepSpawner : MonoBehaviour
         GameObject sheep = Instantiate(sheepPrefab, randomPosition, sheepPrefab.transform.rotation);   
         sheepList.Add(sheep);
         sheep.GetComponent<Sheep>().SetSpawner(this);
+        sheep.GetComponent<Sheep>().runSpeed = Mathf.Lerp(minSheepSpeed, maxSheepSpeed, timeElapsed / sheepSpeedChangeTime);
     }
 
     private IEnumerator SpawnRoutine()

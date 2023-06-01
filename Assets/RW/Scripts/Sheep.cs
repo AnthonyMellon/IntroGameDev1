@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Sheep : MonoBehaviour
 {
-    [SerializeField] private float runSpeed;
+    [NonSerialized] public float runSpeed;
     [SerializeField] private float gotHayDestroyDelay;
     private bool hitByHay;
     private bool dropped;

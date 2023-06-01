@@ -834,7 +834,9 @@ MonoBehaviour:
   minTimeBetweenSpawns: 0.5
   maxTimeBetweenSpawns: 2
   timeBetweenSpawnsChangeTime: 120
-  sheepList: []
+  minSheepSpeed: 10
+  maxSheepSpeed: 20
+  sheepSpeedChangeTime: 120
 --- !u!4 &1498290633
 Transform:
   m_ObjectHideFlags: 0
